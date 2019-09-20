@@ -1,0 +1,49 @@
+package fileassigment;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class FileAssigment1 {
+	public static void main(String[] args) {
+	Scanner sc =new  Scanner(System.in); 
+	try(FileOutputStream fos = new FileOutputStream("D:\\Practise\\abc4.txt"))
+		{
+		
+			try(DataOutputStream dos = new DataOutputStream(fos))
+			
+			{
+				int num = 12;
+				while(true) {
+					System.out.println("Enter number");
+					num = sc.nextInt();
+					if(num ==0) {
+						break;
+					}
+					dos.writeInt(num);
+				}
+			}
+			
+	}catch(IOException io) {
+			System.out.println(io);
+		}
+	try(FileInputStream fis = new FileInputStream("D:\\Practise\\abc4.txt")){
+				try(DataInputStream dis = new DataInputStream(fis)){
+			while(dis.available()!=0) {
+				System.out.println(dis.readInt());
+			}
+			
+		}
+	}catch(IOException io) {
+		System.out.println(io);
+		
+	}
+
+	}
+
+
+}
